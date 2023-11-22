@@ -29,7 +29,7 @@ with DAG('parallel_dag', start_date=datetime(2022, 1, 1),
     transform = BashOperator(
         task_id='transform',
         queue='high_cpu',
-        bash_command='sleep 10'
+        bash_command='sleep 30'
     )
  
     extract_a >> load_a
