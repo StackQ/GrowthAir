@@ -1,0 +1,33 @@
+[2023-12-18T16:41:38.820+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: elastic_dag.print_es_info scheduled__2023-12-06T00:00:00+00:00 [queued]>
+[2023-12-18T16:41:38.877+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: elastic_dag.print_es_info scheduled__2023-12-06T00:00:00+00:00 [queued]>
+[2023-12-18T16:41:38.880+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2023-12-18T16:41:38.883+0000] {taskinstance.py:1363} INFO - Starting attempt 1 of 1
+[2023-12-18T16:41:38.884+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2023-12-18T16:41:38.979+0000] {taskinstance.py:1383} INFO - Executing <Task(PythonOperator): print_es_info> on 2023-12-06 00:00:00+00:00
+[2023-12-18T16:41:39.091+0000] {standard_task_runner.py:55} INFO - Started process 87 to run task
+[2023-12-18T16:41:39.155+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'elastic_dag', 'print_es_info', 'scheduled__2023-12-06T00:00:00+00:00', '--job-id', '291', '--raw', '--subdir', 'DAGS_FOLDER/elastic_dag.py', '--cfg-path', '/tmp/tmp569iczjp']
+[2023-12-18T16:41:39.169+0000] {standard_task_runner.py:83} INFO - Job 291: Subtask print_es_info
+[2023-12-18T16:41:39.594+0000] {task_command.py:376} INFO - Running <TaskInstance: elastic_dag.print_es_info scheduled__2023-12-06T00:00:00+00:00 [running]> on host facebf18dc20
+[2023-12-18T16:41:40.331+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=elastic_dag
+AIRFLOW_CTX_TASK_ID=print_es_info
+AIRFLOW_CTX_EXECUTION_DATE=2023-12-06T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-12-06T00:00:00+00:00
+[2023-12-18T16:41:40.400+0000] {base.py:71} INFO - Using connection ID 'elastic_default' for task execution.
+[2023-12-18T16:41:40.402+0000] {taskinstance.py:1851} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 193, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/elastic_dag.py", line 9, in _print_es_info
+    print(hook.info())
+AttributeError: 'ElasticHook' object has no attribute 'info'
+[2023-12-18T16:41:40.468+0000] {taskinstance.py:1406} INFO - Marking task as FAILED. dag_id=elastic_dag, task_id=print_es_info, execution_date=20231206T000000, start_date=20231218T164138, end_date=20231218T164140
+[2023-12-18T16:41:40.558+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 291 for task print_es_info ('ElasticHook' object has no attribute 'info'; 87)
+[2023-12-18T16:41:40.643+0000] {local_task_job.py:164} INFO - Task exited with return code 1
+[2023-12-18T16:41:40.979+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
